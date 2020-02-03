@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <head>
+            <link rel="stylesheet" href="styles.css" type="text/css" />
+        </head>
+        
+        <div id="app">
+            <h1 v-once>{{ title }}</h1>
+            <p> {{ changeTitle("This is my changed title") }}</p>
+            <p>Take me to <a v-bind:href="link">Google</a></p>
+            <button v-on:click="clickMe($event)">
+                You have clicked me {{ times }} time<span v-if="times !== 1">s</span>
+            </button>
+        </div>
+        
+        <hr>
+        
+        <div id="fb">
+            <p v-html="fbCode"></p>
+            <input type="text" placeholder="Enter any text, and see it reflect below" v-model="text" />
+            <p>{{ text }}</p>
+        </div>
+        
+        <hr>
+        
+        <div id="watcher">
+            Counter value: {{ counter }}
+            <input 
+            type="number" 
+            placeholder="Type counter value, then press enter to change"
+            @keydown.enter="changeCounter($event)"
+            />
+            <p>Counter has changed {{ timesChanged}} time<span v-if="timesChanged !== 1">s</span></p>
+        </div>
+        
+        <hr>
+        
+        <div id="rgb">
+            <p>Click on the box below to see RGB effects</p>
+            <button class="rgb"
+                @click="nextColor()"
+                :class="color"
+                :style="{ backgroundColor: color }"
+            >
+            </button>
+            <input type="text" v-model="color" />
+        </div>
+        
+    </body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</html>
